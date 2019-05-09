@@ -1,0 +1,123 @@
+{
+    "description": "flashcards to prepare for an interview",
+    "machine learning":{
+        "0":{
+            "question":"What is cross validation? How do you do it correctly?",
+            "answer":"Cross validation is a model validation technique for assessing how the results of a statistical analysis will generalize to an independent data set. Mainly used in settings where the goal is prediction and one wants to estimate how accurately a model will perform in practice. The goal of cross validation is to define a data set to test the model in the training phase (i.e. a validation data set) in order to limit problems like overfitting and gain insight on how the model will generalize to an independent data set.
+
+            Cross validation is also used to select model hyperparameters by finding the set of hyperparameters that give maximum or minimum values of interest in cross validation tests.
+
+            Examples: leave-one-out cross validation, K-fold cross validation.
+
+            How do you do it right?
+
+                - The training and validation data sets have to be drawn from the same population
+                - Any dependence of the target variable on other target variables significatly complicates cross-validation. This can occur in time-series and spatial data"
+        },
+        "1":{
+            "question":"Is it better to design robust or accurate algorithms?",
+            "answer":"Bullet Points:
+                - The ultimate goal is to design systems with good generalization capacity - that is, systems that correctly identify patterns in data instances not seen before.
+                - The generaliation performance of a learning system strongly depends on the complexity of the model assumed.
+                - If the model is too simple, the system can only capture the actual data regularities in a rough manner. In this case, the system has poor generalization properties and is said to suffer from underfitting. We can interpret this as a high bias model.
+                - By contrast, when the model is too complex, the system can identify accidental patterns in the training data that need not be present in the test set. These spurious patterns can be the result of random fluctuations or of measurement errors durign the data collection process In this case, the generalization capacity is also poor. The  learning system is said to be affected by overfitting. We can interpret this as high variance.
+                - Spurious patterns, which are only present by accident in the data, tend to have complex forms. We can use Occam's Razor to avoid overfitting: simpler models are preferred if more complex models do not significantly improve the quality of the description for the observations.
+                - Quick response: Occam's Razor. It depends on the learning task. We need to strike the right balance for each problem.
+                - Ensemble learning can help balance the bias/variance tradeoff (several weak learners together = strong learner)"
+        },
+        "2":{
+            "question":"How are model metrics defined and selected?",
+            "answer":"The selection of the model predictive metrics depends on whether it's a regression or classification problem.
+
+            For regression problems, common metrics are:
+            - RSS (residual sum of squares), RMSE (root mean squared error), MAE (mean absolute error), WMAE (weighted mean absolute error), RMSLE (root mean squared logarithmic error).
+            - Try to write each of these out mathematically.
+
+            For classification problems, common metrics are:
+            - Accuracy: TP + TN / (TP + TN + FP + FN)
+            - Recall / Sensitivity / True Positive Rate: TP / (TP + FN)
+            - Precision / Positive Predictive Rate: TP / (TP + FP)
+            - Specificity / True Negative Rate: TN / (TN + FP)
+
+            ROC & AUC:
+            - For a binary classification problem, the ROC plots the true positive rate vs. the false positive rate (1 - Specificity). Ideally, at a FPR of 0 the TPR will be 1, which would yield an AUC (area under the curve) of 1. The ROC illustrates how the probability threshold at which the classification occurs affect the classification."
+        },
+        "3":{
+            "question":"Explain what regularization is and why it's useful.
+            Name and describe several specific methods.",
+            "answer":"Regularization adds a term to the least squares loss function that penalizes the magnitude of the model coefficients. The term is called a penatly, or shrinkage term. It is used to prevent overfitting and thereby improve the generalization of a model (increase bias and decrease variance). We have covered L1 (Lasso) and L2 (Ridge) regularization techniques.
+
+            In both cases the penalty term is a function of the model coefficients. Ther term includes a value, lambda, that affects how sensitive the total cost function is to the penalty term.
+
+            In the case of L1, the penatly term is lambda multiplied by the sum of the absolute value of the model coefficients. Lasso (L1) zeros out some coeffiients entirely. A disadvantage of this method is that this selection can be arbitrary.
+
+            In the case of L2, the shrinkage term is lambda multiplied by the sum of the square value of the coefficients. Ridge (L2) maintains all features in the data set. Ridge regression tends to perform better than Lasso when coefficients are correlated.
+
+            Both L1 and L2 help deal with collinearity issues. A combination of the two is called an Elastic Net, and it combines the advantages of both methods. "
+        },
+        "4":{
+            "question":"Explain what a local optimum is and why it's important in a specific context, such as K-means clustering.",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+
+
+        "":{
+            "question":"",
+            "answer":""
+        },
+    }
+
+
+}

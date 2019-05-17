@@ -56,63 +56,288 @@
             Both L1 and L2 help deal with collinearity issues. A combination of the two is called an Elastic Net, and it combines the advantages of both methods. "
         },
         "4":{
-            "question":"Explain what a local optimum is and why it's important in a specific context, such as K-means clustering.",
-            "answer":""
+            "question":"Explain what a local optimum is and why it's important in a specific context, such as K-means clustering.
+
+            What are specific ways of determining if you have a local optimum problem? What can be done to avoid local optima?",
+            "answer":"A local optimum is a solution that is optimal within a neighboring set of candidate solutions. This is often in contrast with a global optimum, which si the optimal soltuion among all solutions. Often in machine learning the model coefficients are fit in such a way that the cost function associated with the predictive error is minimized. The question of whether the cost function is at a local minimum or a global minimum arises in this context.
+
+            In K-means clustering an objective cost function will always decrease until a local optimum is reached. However, cluster results will depend on the initial random cluster assignment.
+
+            Differign intitializations resulting in different clusters is evidence of a local minimum problem.
+
+            This problem can be addressed for K-Means by repeating the clusters for many different initialization values and then taking the solution that has the lowest cost."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "5":{
+            "question":"Assume that you need to generate a predictive model using multiple regression. Explain how you intend to validate this model.",
+            "answer":"You can validate the model using:
+            R^2: This coefficient of determination quantifies the fraction fo the variance of the predicted (dependent) variable that can be explained by the independent variable. However, having a large R^2 is not enough. In fact, you can always increase R^2 by adding more variables, but that doesn't mean that your model is better or 'validated'
+
+            Analysis of Residuals:
+            - check for homoskedasticity (is the variance from the regression line the same for all values of the predictor variable? It shouldn't increase or decrease as the predictor variable changes)
+            - The residuals should be normally distributed
+            - The target variable, or anything from one row of data to the next should not be dependent on each other (time series and spatial data can violate this). No multicollinearity.
+
+            Out-of-sample evaluation:
+            - Cross-validation (then checking with R^2)"
         },
-        "":{
-            "question":"",
-            "answer":""
+        "6":{
+            "question":"What is latent semantic indexing? What is it used for?",
+            "answer":"Latent semantic indexing and retrieval is a method that uses singular value decomposition to identify patterns in the relationships between the terms and concepts contained in an unstructured collection of text. It is based on the principle that words that are used in the same contexts tend to have similar meanings. For example: two synonyms may never occur in the same passage, but should nonetheless have highly associated representations.
+
+            Latent semantic indexing is used for:
+                Learning correct word meanings
+                subject matter comprehension
+                Information retrieval
+                Sentiment analysis (social network analysis)"
         },
-        "":{
-            "question":"",
-            "answer":""
+        "7":{
+            "question":"Explain what resampling methods are and why they are useful.",
+            "answer":"Resampling methods repeatedly draw samples from a given sample in order to provide alternative representations fo that sample. Resampling is commonly used to generate alternative training sets so that a model of interest can be refit on each set in order to obtain additional information about the fitted model.
+
+            For exqample: repeatedly draw different samples from training data, fit a linear regression to each new sample, and then examine the extent to which the resulting fit differs.
+
+            Cross-validation and bootstrapping both utilize resampling.
+
+            In cross-validation, the data set is randomly split into training and test data sets (using random sampling with no replacement) and then the model is trained on the training set and evaluated on the test set to evaluate model performance.
+
+            In bootstrapping data is drawn with replacement from the dataset. Bootstrapping is mostly used to quantify the uncertainty associated with a given estimator or statistical learning method, but it can also be used to provide alternative datasets for a model to train on (such as in random forests)."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "8":{
+            "question":"What is principal component analysis? Explain the sort of problems that you would use PCA for. Also explain its limitations as a method.",
+            "answer":"PCA is a statistical method that uses an orthogonal transformation to convert a set of observations of correlated variables into a set of values of linearly uncorrelated variables called principal components. Its a form of dimensionality reduction.
+
+            In PCA data is reduced from m to k dimensions (k <= m) where the goal is to find the k vectors onto which to project the data so as to minimize the projection error.
+
+            Algorithm:
+            1) Preprocessing (standardization)
+            2) Compute covariance matrix Σ
+            3) Compute eigenvectors and eigenvalues of Σ
+            4) Choose k principal components so as to retain x% of the variance (typically x = 99) by summing the eigenvalues
+
+            PCA is used in compression (reducing disk/memory needed to store data), predictive models, data visualization, PCR (principal component regression), and survey and polling analyses.
+
+            Limitations:
+            - PCA is not scale invariant
+            - The directions with the largest variance are assumed to be of most interest
+            - Only considers orthogonal transformations (rotations) of the original variables
+            - If the variables are correlated, PCA can achieve dimension reduction. If not, PCA just orders them according to their variances."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "9":{
+            "question":"Explain what false positives and false negatives are. Provide exampes when false positives are more important than false negatives, and vice-versus.",
+            "answer":"FALSE POSITIVE:
+                - Improperly reporting the presence of a condition when it's not there.
+                    - Example: HIV positive test when the patient is actually HIV negative
+            FALSE NEGATIVE:
+                - Improperly reporting the absense of a condition when in reality it's the case.
+                    - Example: not detecting a disease when the patient has the disease
+            When false positives are more important than false negatives:
+                - In a non-contagious disease, where delay doesn't have any long-term consequences, but the treatment itself is grueling:
+                - HIV test: psychological impact
+            When false negatives are more important than false positives:
+                - If early treatment is important for good outcomes
+                - In quality control: a defective item passes through the cracks!
+                - Software testing: a test to catch a virus has failed."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "10":{
+            "question":"What is the difference between supervised and undsupervisd learning?
+            Give concrete examples.",
+            "answer":"SUPERVISED LERNING:
+            Predictors (or features) are associated with a response (target). We wish to fit a model that relates features to targets for better understanding the relation between them (inference) or with the aim of accurately predicting the target for future observations (prediction).
+            UNSUPERVISED LEARNING:
+            There isn't a response (target) that can supervise the analysis. Unsupervised learning instead tends to aim towards organizing for finding structure in the data.
+
+            SUPERVISED MACHINE LEARNING TECHNIQUES:
+            Support vector machines, neural networks, linear regression, logistic regression, extreme gradient boosting
+            UNSUPERVISED MACHINE LEARNING TECHNIQUES:
+            Find customer segments, image segmentation, classifying senators by their voting."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "11":{
+            "question":"When would you use random forests instead of support vector machines and why?",
+            "answer":"In a case of multi-class classification problem: SVM will require one-against-all method (memory intensive).
+            If one needs to know feature importances.
+            If one needs to get a model fast (SVM is long to tune, need to choose the appropriate ernel and its parameters, for instance sigma and epsilon)
+            In a semi-supervised learning context (Random forest and dissimilarity measure): SVM can work only in a supervised learning mode."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "12":{
+            "question":"What's collaborative filtering and how is it used in a machine learning context?",
+            "answer":"Collaborative filtering is a method of making automatic predictions (filtering) baout the interests of a user by collecting preferences or taste information from many users (collaborating). The underlying assumption of the collaborative filterign approach is that if a person A has the same opinion as a person B on an issue, A is more likely to habe B's opinion on a different issue x than to have the opinion on x of a person chosen randomly,
+
+            Thsi is investigated mathematically by looking for correlations between users or between items. Then these correlations are used to wieght hte ratings of users on items that are most highly correlated.
+
+            Some recommendations systems use collaborative filtering."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "13":{
+            "question":"Provide two or more ways of determining how similar data poitns are.",
+            "answer":"Cosine similarity quantifies how much two multidimensional vectors point in the same direction on a scale from 1 (pointing in the same direction) to -1 (in the same line but pointing in the opposite direction). Cosine similarity of 0 means that the vectors are orthogonal, Cosine similarity is calculated from the dot product of the two vectors divided by the product of their magnitudes. Cosine similarity does not differentiate based on the magnitude of vectors, only where they are pointing.
+
+            Euclidean distance quantifies the straight line distance between two vectors using the root sum of the squared differences. Euclidean distance depends on both vector magnitude and the directions the vectors are pointing."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "14":{
+            "question":"What is the difference between the coefficient of determination R^2 and an adjusted R^2?
+            When might you use the adjusted value?",
+            "answer":"R^2 measures how close data are to a fitted regression line. Another way to think of it is the fraction of variance in the target variable that can be explainedb y the model. It is defined mathematically as 1 minus the sum of the squared residuals (SSR) divided by the total sum of the squares (SST), where SST is the sum, over all of the observations, of the squared differences of each observation from the overall mean.
+
+            R^2 = 1 - SSR/SST
+
+            R^2 will vary from 0 (the model explains none of the variance) to 1 (the model explains all of the variance). R^2 will not decrease as more coefficients are added to the regression model, even if the coefficients are non-sensical. Adjusted R^2 modifies the R^2 value by penalizing it by the number of coefficients.
+
+            It's calculated from:
+                Adjusted R^2 = ((1-n)R^2 - k) / (n - k - 1)
+                where n is the number of data points and k is the number of coefficients
+            Use adjusted R^2 when you wish to punish model complexity."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "15":{
+            "question":"Do you think the ensemble average of 50 small decision tress will outpreform a single deep decision tree?
+            Why or why not?",
+            "answer":"A single deep decision tree is likely to suffer from overfitting. It will exhibit very little bias on the training data, but likely shows large variance on the test data.
+
+            The idea of using many small trees is an example fo the approach of combining many weak learners into a strong learner. Each tree of the 50 trees will likely show a good degree of bias, but as the ensemble average is taken both bias and variance will be decreased.
+
+            So the model using multiple small trees will likely be better in practice."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "16":{
+            "question":"For a regression model, why might the mean square error be a poor measure of model performance?
+            What would you suggest instead?",
+            "answer":"In MSE, the residuals are squared. Therefor large outliers, which will result in large residuals (errors) and even larger squared residuals, may unduly affect the regression to minimize the effect of the outliers rather than the rest of the data.
+
+            An alternate approach would be to use the mean absolute error (MAE) which would prevent squaring an already possibly large value."
         },
-        "":{
-            "question":"",
-            "answer":""
+        "17":{
+            "question":"What is a major shortcoming of the Naive Bayes approach? How might you address it?",
+            "answer":"Naieve Bayes assumes that all feature sin the dataset are uncorrelated and independent. In large datasets this is rarely the case.
+            A way to deal with correlation between features is to use Principal Component Analysis (PCA). PCA performs a linear mappign of the data onto a lower-dimensional space in such a way that hte variance of the data in the low-dimensional representaiton is maximized.
+            In practice, the covariance (and sometiems the correlation) atrix of the data is constructed and the eigenvectors on this matrix are computed. The eigenvectors that correspond to the largest eigenvalues (the principal components) can now be used to reconstruct a large fraction of the variance of the original data. These eigenvectors are less correlated than the original, hgiher dimensional featuer vectors."
+        },
+        "18":{
+            "question":"What are a couple of reasons to use an intercept term in a linear regression?",
+            "answer":"1. The intercept will guarantee that the residuals have zero mean.
+            2. It guarantees that the least squares slopes estimates (the coefficients) are unbiased."
+        },
+        "19":{
+            "question":"What assumptions are required for linear regression?
+            Associate the assumptions with the ability to:
+            1) Predict target y from features x
+            2) Estimate the standard error of the coefficients
+            3) Predict an unbiased target y from features x
+            4) Make probability statements, perform hypothesis testing involving slope and correlation, estimate confidence intervals",
+            "answer":"ASSUMPTIONS:
+            1) The data used in fitting the model si representative of the population
+            2) The true underlying underlying relation between x and y is linear.
+            3) Variance of the residuals is constant (homoscedastic, not heteroscedastic).
+            4) The residuals are independent (time series and spacial data can complicate this).
+            5) The residuals are normally distributed.
+
+            To predict y from x:
+                - assumptions 1 and 2
+            To estimate standard error of the coefficients:
+                - assumptions 1, 2, 3
+            To get an unbiased estimation of y from x:
+                - assumptions 1, 2, 3, 4
+            To make probability statments, perform hypothesis testing involving slope and corrleation, estimate confidence intervals:
+                - assumptions 1, 2, 3, 4, 5
+
+            Note:
+            Linear regression doesn't assume anything about the distributions of x and y, it only makes assumptions about the distribution of the residuals, and this is all that's needed for the statistical tests to be valid."
+        },
+        "20":{
+            "question":"How might one find the local minimums or maximums of a function?
+            How do you know if they are minimums or maximums?",
+            "answer":"Minumums or maximums in a function are found by finding where the first derivative (taken analytically or numerically) is equal to zero.
+
+            The second derivative is the derivative of the first derivative.
+            Where the first derivative is zero:
+                - If the second derivative is positive, the point is a local minumum.
+                - If the second derivative is negative, the point is a local maximum."
         },
 
 
+        "21":{
+            "question":"What is a major difference between linear and logistic regression?
+            Provide a scenario in which each would be used.
+            How would you interpret coefficients obtained from each?",
+            "answer":"In linear regression the outcome (dependent variable) is continuous. It can have any one of an infinite number of possible values. In logistic regression, the outcome (dependent variable) has only a limited number of possible values.
+
+            For instance, if X contains the area in square feet of houses, and y contains the corresponding sale price of those hosues, you could use linear regresion to predict selling price as a function of house size. However, if you wanted to predict whether or not a house would sell for more than $200k based on size, you would use logistic regression."
+        },
+        "22":{
+            "question":"What is multicollinearity in your data set and why is it a potential problem?
+            How do you detect it?
+            How might you remove it?",
+            "answer":"Collinearity occurs in a dataset when two or more features (a.k.a. X variables) are highly correlated. These features provide redundant information. The issue with collinear features is that the design matrix becomes singular and can't be inverted so the best fit coefficients can't be determined.
+
+            Collinearity can be detected from:
+            - Opposing signs for the coefficients of the affected variables, where it's expected that both would be positive or negative.
+            - The standard errors of the regression coefficients of the affected variables tend to be large.
+            - Large changes in the individual coefficients when a predictor variable is added or deleted.
+            - Rule of thumb: a variance inflation factor (VIF) > 5 indicates a multicollinearity problem, where:
+                tolerance = 1 - R^2(sub j) and VIF = 1 / tolerance
+                R^2(sub j) is the coefficiento f determination of a regression fo feature j on all of the other features.
+            Collinearity can be addressed by:
+                - Regularization (Ridge or Lasso)
+                - Principal component analysis (PCA)
+                - Engineering a feature that combines the affected features
+                - Simple dropping one of the features (worst - but viable option)"
+        },
+        "23":{
+            "question":"Describe how a decision tree works.
+            Additionally, provide some detail on how the feature to split on is determined at some point in the tree.",
+            "answer":"1) Take the entire data set as input
+            2) Feature by feature, searhc for a split that maximizes the 'separation' of the classes. This split will divide the data in two.
+            3) Apply the best split (the one that decreases impurity the most) to the input data. There are different ways to do this (see below).
+            4) Re-apply steps 1-3, where in each case the divided data is the new data set.
+            5) Stop at a stopping criteria. For example, this could be a maximum depth, a minimum number of samples per leaf, or all of the data has been perfectly classified (and te model is probably overfit!).
+            6) Optional - to decrease overfitting, you could go back and 'pune' the trees to some maximum depth.
+
+            Algorithms for constructing decidion trees usually work top-down, by choosing a feature at each step that 'best' splits the set of items. Different algorithms use different metrics for measuring 'best'. These generally measure the homogeneity of the target variable within the subsets after the split. These metrics are applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split.
+
+            Algorithms for determining this split are:
+            GINI IMPURITY:
+            This is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it was randombly labeled according to the distribution of labels in the subset.
+            INFORMATION GAIN (entropy):
+            This is based on the concept of entropy from information theory, where the goal is to minimize heterogeneity in the resulting subsets.
+            VARIANCE REDUCTION:
+            This is often employed in cases where the target is continuous (regression tree), meaning that the use of other metrics would first require discretization before being applied. The variance reduction is defined as the total reduction of the variance of the target variable due to the split."
+        },
+        "24":{
+            "question":"What is the curse of dimensionality? How does it affect distance and similarity measures?",
+            "answer":"The curse of dimensionality refers to various phenomena that arise when analyzing and organizing data in high dimensional spaces.
+            Common theme: When number of dimensions increases, the volume of space increases so fast that the available data becomes sparse.
+            Issue with any method that requires statistical significance: the amount of data needed to support the result grows exponentially with the dimensionality.
+            Everything becomes far and difficult to organize, so everything is equally far and dissimilar."
+        },
+        "25":{
+            "question":"What do you think about the idea of injecting noise into your data set to test the sensitivity of your models?",
+            "answer":"It's not a bad idea - it should help avoid overfitting, so you could use this to increase the generality of your model. Regularization and ensemble methods address this, too."
+        }
+    },
+    "statistics":{
+        "":{
+            "question":"What is a p-value?
+            When is it used?",
+            "answer":"The p-value is defined as the probability of obtaining a result equal to or 'more extreme' than what was actually observed when the null hypothesis is true.
+
+            The p-values is widely used in statistical hypothesis testing, specifically in null hypothesis significance testing. In this method, as a part of experimental design, before performing the experiment, one first chooses a model (the null hypothesis) and a threshold value for p, called the significance level of the test, traditionally 5% or 1% [6] and denoted as alpha. If the p-value is less than or equal to the chosen significance level, the test suggests that hte observed data is inconsistent with the null hypothesis, so the null hypothesis must be rejected."
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
+        "":{
+            "question":"",
+            "answer":""
+        },
         "":{
             "question":"",
             "answer":""
